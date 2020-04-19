@@ -1,26 +1,61 @@
-/**
- * SYST 17796 Project Winter 2020 Base code.
- * Students can modify and extend to implement their game.
- * Omer Siddiqui
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
-package ca.sheridancollege.project;
 
 /**
- * A class to be used as the base Card class for the project. Must be general
- * enough to be instantiated for any Card game. Students wishing to add to the code 
- * should remember to add themselves as a modifier.
- * @author dancye
+ *
+ * @author omerm
  */
-public abstract class Card 
-{
-    //default modifier for child classes
+public class Card {
+    private int cardNumber;
+    private char cardColor;
     
-    /**
-     * Students should implement this method for their specific children classes 
-     * @return a String representation of a card. Could be an UNO card, a regular playing card etc.
-     */
-    
+    public Card(int cNumber, char cColor){
+        cardNumber = cNumber;
+        cardColor = cColor;
+    }
+    public int getCardNumber(){
+        return cardNumber;
+    }
+    public char getCardColor(){
+        return cardColor;
+    }
+    public static char getCardColor(Card cards){
+        return cards.getCardColor();
+    }
+    public static int getCardNumber(Card cards){
+        return cards.getCardNumber();
+    }
     @Override
-    public abstract String toString();
-    
+    public String toString(){
+        String cColor = null;
+        String cNumber = null;
+        if(cardColor == 'r'){
+            cColor = "Red";
+        }else if(cardColor == 'b'){
+            cColor = "Blue";
+        }else if(cardColor == 'y'){
+            cColor = "Yellow";
+        }else if(cardColor == 'g'){
+            cColor = "Green";
+        }else if(cardColor =='a'){
+            cColor = "Any";
+        }
+        if(cardNumber <= 9){
+            cNumber = Integer.toString(cardNumber);
+        }else if(cardNumber == 10){
+            cNumber = "Skip";
+        }else if(cardNumber == 11){
+            cNumber = "Draw Two";
+        }else if(cardNumber == 12){
+            cNumber = "Reverse";
+        }else if(cardNumber == 13){
+            cNumber = "Wild";
+        }else if(cardNumber == 14){
+            cNumber = "Wild Draw Four";
+        }
+        return (cColor + " - " + cNumber);
+    }
 }
